@@ -8,6 +8,8 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import PrivateRoute from "./PrivateRoute";
+import Workspaces from "../pages/Dashboard/Workspaces";
+import Tasks from "../pages/Dashboard/Tasks";
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +45,14 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Dashboard />,
+            },
+            {
+                path: "workspaces",
+                element: <Workspaces />
+            },
+            {
+                path: "workspaces/:id",
+                element: <Tasks />
             },
         ]
     },
