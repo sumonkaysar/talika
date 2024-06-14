@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import DateTimePicker from "react-datetime-picker";
 import TaskDetailsModal from "./TaskDetailsModal";
 
-const TaskListCard = ({ task, refetch }) => {
+const TaskListCard = ({ task, refetch, currentStatus }) => {
     const talikaToken = Cookies.get("talikaToken");
     const editCloseBtnRef = useRef();
     const deleteCloseBtnRef = useRef();
@@ -25,7 +25,7 @@ const TaskListCard = ({ task, refetch }) => {
     const [{ isDragging }, dragRef] = useDrag(
         () => ({
             type: "Card",
-            item: { task },
+            item: { taskId: _id, currentStatus },
             collect: (monitor) => ({
                 isDragging: !!monitor.isDragging()
             })

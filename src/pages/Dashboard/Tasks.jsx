@@ -41,7 +41,7 @@ const Tasks = () => {
             priority,
             workspaceId: id,
             status: "To Do",
-            index: todos.length + 1,
+            // index: todos[todos.length -1].index + 1,
             deadline: deadline.getTime(),
             creatorEmail: user.email,
             createdTime: (new Date()).getTime()

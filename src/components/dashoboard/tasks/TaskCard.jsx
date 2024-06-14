@@ -22,12 +22,28 @@ const TaskCard = ({ tasks, status, setTasks, workspaceId, refetch }) => {
     const [{ isOver }, dropRef] = useDrop(
         () => ({
             accept: "Card",
-            drop: (item) => setTasks(prevTasks => prevTasks.includes(item.task) ? prevTasks : [...prevTasks, item.task]),
+            drop: (item) => handleMoveTask(item),
+            // drop: (item) => setTasks(prevTasks => prevTasks.includes(item.task) ? prevTasks : [...prevTasks, item.task]),
             collect: (monitor) => ({
-                isOver: !!monitor.isOver()
+                isOver: !!monitor.isOver() && monitor.getItem()?.currentStatus !== status
             })
         })
     )
+
+    const handleMoveTask = (item) => {
+        const { taskId, currentStatus } = item;
+        const move = {
+            status,
+        }
+        if (currentStatus !== status) {
+            axios.patch(`${server}/tasks/${taskId}`, move, { "headers": { "authorization": `Bearer ${talikaToken}` } })
+                .then(({ data }) => {
+                    // toast.success("task is added successfully");
+                    refetch();
+                })
+                .catch(err => console.log(err))
+        }
+    }
 
     const handleAddTask = data => {
         const { title, description, priority } = data;
@@ -37,7 +53,7 @@ const TaskCard = ({ tasks, status, setTasks, workspaceId, refetch }) => {
             priority,
             workspaceId,
             status,
-            index: tasks.length + 1,
+            // index: tasks[tasks.length -1].index + 1,
             deadline: deadline.getTime(),
             creatorEmail: user.email,
             createdTime: (new Date()).getTime()
@@ -54,11 +70,11 @@ const TaskCard = ({ tasks, status, setTasks, workspaceId, refetch }) => {
     }
 
     return (
-        <div className="bg-white py-3 rounded-md">
+        <div className="bg-white py-3 rounded-md" ref={dropRef}>
             <h5 className="text-sm font-semibold mx-4 ">{status}</h5>
-            <div ref={dropRef}>
+            <div className={isOver && "h-10"}>
                 {
-                    tasks.map(task => <TaskListCard key={task?._id} task={task} refetch={refetch} />)
+                    tasks.map(task => <TaskListCard key={task?._id} task={task} refetch={refetch} currentStatus={status} />)
                 }
             </div>
             {
