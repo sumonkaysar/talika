@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DateTimePicker from "react-datetime-picker";
 import { useForm } from "react-hook-form";
 import { FaPlus } from "react-icons/fa6";
@@ -68,6 +68,25 @@ const TaskCard = ({ tasks, status, setTasks, workspaceId, refetch }) => {
             })
             .catch(err => console.log(err))
     }
+
+    console.log("a");
+
+    useEffect(() => {
+        if (status === "To Do" || status === "Ongoing") {
+            tasks.forEach(task => {
+                // if the deadline is about to finish within 6 hours or less
+                const remMiliSec = task.deadline - (new Date()).getTime()
+                if (remMiliSec < 6 * 3600 * 1000 && remMiliSec > 0) {
+                    const remMin = Math.floor(remMiliSec/(1000 * 60)) % 60
+                    const remHour = Math.floor(remMiliSec/(1000 * 3600))
+                    toast.warning(`${task.title} has only ${remHour}h:${remMin}m`)
+                }
+                // else if (remMiliSec === 0){
+                //     toast.error(`Deadline is finished for ${task.title}`)
+                // }
+            });
+        }
+    }, [tasks]);
 
     return (
         <div className="bg-white py-3 rounded-md" ref={dropRef}>
