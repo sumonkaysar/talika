@@ -72,10 +72,12 @@ const TaskCard = ({ tasks, status, setTasks, workspaceId, refetch }) => {
     return (
         <div className="bg-white py-3 rounded-md" ref={dropRef}>
             <h5 className="text-sm font-semibold mx-4 ">{status}</h5>
-            <div className={isOver && "h-10"}>
+            <div>
                 {
                     tasks.map(task => <TaskListCard key={task?._id} task={task} refetch={refetch} currentStatus={status} />)
                 }
+            </div>
+            <div className={isOver && "h-10"}>
             </div>
             {
                 isShown ? <form onSubmit={handleSubmit(handleAddTask)} className="mx-4">
