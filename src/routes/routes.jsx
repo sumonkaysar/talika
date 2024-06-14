@@ -10,6 +10,7 @@ import Contact from "../pages/Contact";
 import PrivateRoute from "./PrivateRoute";
 import Workspaces from "../pages/Dashboard/Workspaces";
 import Tasks from "../pages/Dashboard/Tasks";
+import Profile from "../pages/Dashboard/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
             {
                 path: "workspaces/:id",
                 element: <Tasks />
+            },
+            {
+                path: "profile",
+                element: <Profile />
             },
         ]
     },

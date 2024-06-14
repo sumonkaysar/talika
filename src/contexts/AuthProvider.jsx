@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
     const logout = (navigate) => {
         signOut(auth).then(() => {
             setUser(null);
-            navigate("/login")
+            navigate("/")
         })
     };
 
