@@ -10,19 +10,17 @@ import Cookies from "js-cookie";
 const Dashboard = () => {
     const { user } = useAuth();
     const talikaToken = Cookies.get("talikaToken");
+    const currentYear = (new Date()).getFullYear();
     const { data: { data: dashboardData = {} } = {} } = useQuery({
         queryKey: ['dashboardData', user?.email],
         queryFn: () => axios.get(`${server}/users/dashboard/${user?.email}`, { "headers": { "authorization": `Bearer ${talikaToken}` } })
-    })
-    const [data, setData] = useState([
-        { name: 'A', value: 30 },
-        { name: 'B', value: 80 },
-        { name: 'C', value: 45 },
-        { name: 'D', value: 60 },
-        { name: 'E', value: 20 },
-        { name: 'F', value: 90 },
-        { name: 'G', value: 55 },
-    ]);
+    });
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const data = Object.entries(dashboardData.yearlyTasks[currentYear]).map(([key, value]) => {
+        const month = monthNames[key - 1] || "Unknown";
+        return { month, tasks: value };
+    });
 
     return (
         <div className="mb-20 mt-10 w-11/12 mx-auto">

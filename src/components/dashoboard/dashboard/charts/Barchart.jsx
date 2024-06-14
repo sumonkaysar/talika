@@ -16,11 +16,11 @@ const Barchart = ({data}) => {
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis dataKey="value" />
+                <XAxis dataKey="month" />
+                <YAxis dataKey="tasks" />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey="value" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
+                <Legend  />
+                <Bar dataKey="tasks" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
             </BarChart>
         </ResponsiveContainer>
     )

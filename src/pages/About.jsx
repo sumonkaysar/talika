@@ -1,10 +1,12 @@
-const About = () => {
+import Banner from "../components/about/Banner";
+import Missions from "../components/about/Missions";
 
-    return (
-        <div>
-            
-        </div>
-    )
-};
-
-export default About
+export default function About() {
+  
+  return (
+    <div>
+      <Banner />
+      <Missions />
+    </div>
+  );
+}
