@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa6";
 const Footer = () => {
     return (
         <div className="bg-gray-200">
-            <footer className="footer p-10 items-center">
+            <footer className="footer p-10 items-center w-[95%] max-w-[1500px] mx-auto justify-between">
                 <aside>
                     <div className="max-w-[70px]">
                         <img className="w-full" src={logo} alt="Talika" />

@@ -25,7 +25,7 @@ const Profile = () => {
 
     return (
         <div className="px-10 py-10">
-            <div className="grid xl:grid-cols-2 gap-5">
+            <div className="grid xl:grid-cols-2 gap-5  mt-10 lg:mt-0">
                 <div>
                     <div className="card bg-white rounded-sm">
                         <div className="card-body items-center text-center py-8">

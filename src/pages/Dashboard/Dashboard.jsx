@@ -17,14 +17,14 @@ const Dashboard = () => {
     });
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    const data = Object.entries(dashboardData.yearlyTasks[currentYear]).map(([key, value]) => {
+    const data = dashboardData?.yearlyTasks && Object.entries(dashboardData.yearlyTasks[currentYear]).map(([key, value]) => {
         const month = monthNames[key - 1] || "Unknown";
         return { month, tasks: value };
     });
 
     return (
         <div className="mb-20 mt-10 w-11/12 mx-auto">
-            <h1 className="font-semibold text-3xl uppercase text-[#064e89]">Dashboard</h1>
+            <h1 className="font-semibold text-3xl uppercase text-[#064e89] pt-5 lg:pt-0">Dashboard</h1>
             <div className="mt-10">
                 <DashboardCounts dashboardData={dashboardData} />
                 <Barchart data={data} />

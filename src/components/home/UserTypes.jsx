@@ -38,9 +38,9 @@ const UserTypes = () => {
         <section className="pb-12 pt-20 bg-gray-100">
             <div className="w-11/12 max-w-[1440px] mx-auto">
                 <h2 className="text-3xl font-bold text-center mb-8">Who Uses Talika?</h2>
-                <div className="grid lg:grid-cols-2 2xl:grid-cols-3  gap-5">
+                <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-10">
                     {userTypes.map((userType, index) => (
-                        <div key={index} className="card bg-white shadow-xl m-4">
+                        <div key={index} className="card bg-white shadow-xl">
                             <div className="card-body items-center text-center">
                                 <div className="flex justify-center text-xl mb-2">
                                     {userType.Icon}

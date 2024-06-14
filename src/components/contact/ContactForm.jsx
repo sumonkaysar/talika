@@ -1,7 +1,7 @@
 const ContactForm = () => {
     return (
         <section id="contact-form" className="py-12 mx-16">
-            <div className="container mx-auto text-center">
+            <div className="w-[95%] max-w-[1500px] mx-auto text-center">
                 <h2 className="text-4xl font-bold mb-8">Get in Touch</h2>
                 <form className="max-w-md mx-auto">
                     <div className="mb-4">

@@ -5,7 +5,7 @@ const ContactInfo = () => {
 
     return (
         <section id="contact-info" className="py-12 mx-16">
-            <div className="container mx-auto text-center">
+            <div className="w-[95%] max-w-[1500px] mx-auto text-center">
                 <h2 className="text-4xl font-bold mb-8">Our Contact Information</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="contact-card p-4 bg-green-600 shadow-md rounded-lg text-white pb-6">
